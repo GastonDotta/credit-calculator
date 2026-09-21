@@ -91,9 +91,14 @@
 
   <div class="flags">
     <button class="flag-btn" onclick="setC('ar')">🇦🇷</button>
+    <button class="flag-btn" onclick="setC('co')">🇨🇴</button>
+    <button class="flag-btn" onclick="setC('cr')">🇨🇷</button>
+    <button class="flag-btn" onclick="setC('ec')">🇪🇨</button>
+    <button class="flag-btn active" onclick="setC('mx')">🇲🇽</button>
+    <button class="flag-btn" onclick="setC('pa')">🇵🇦</button>
+    <button class="flag-btn" onclick="setC('pe')">🇵🇪</button>
     <button class="flag-btn" onclick="setC('py')">🇵🇾</button>
     <button class="flag-btn" onclick="setC('cl')">🇨🇱</button>
-    <button class="flag-btn active" onclick="setC('mx')">🇲🇽</button>
   </div>
 
   <div class="section">
@@ -166,10 +171,16 @@
     <div class="book">Book a 30-min call →</div>
   </a>
 
-  <a class="wa-btn" href="https://api.whatsapp.com/send/?phone=59896434220&text=Quiero%20agregar%20otro%20pa%C3%ADs%20a%20la%20calculadora%20de%20Sumeria&type=phone_number&app_absent=0" target="_blank">
-    <span class="wa-icon">💬</span>
-    <span>My country is not listed. Add it!</span>
-  </a>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+    <a class="wa-btn" href="https://api.whatsapp.com/send/?phone=59896434220&text=Quiero%20agregar%20otro%20pa%C3%ADs%20a%20la%20calculadora%20de%20Sumeria&type=phone_number&app_absent=0" target="_blank">
+      <span class="wa-icon">🌎</span>
+      <span>My country is not listed</span>
+    </a>
+    <a class="wa-btn" style="border-color:#E7FE4E;color:#E7FE4E" href="https://api.whatsapp.com/send/?phone=59896434220&text=Hi%20Gast%C3%B3n%2C%20I%20just%20used%20the%20Sumeria%20calculator%20and%20I%27d%20like%20to%20learn%20more&type=phone_number&app_absent=0" target="_blank">
+      <span class="wa-icon">💬</span>
+      <span>Let's talk</span>
+    </a>
+  </div>
 
   <div class="source" id="source_text">CNBV/Banxico Mexico (Jul 2026). IMOR microcrédito: 4.67%. TPM: 6.50%. Fintech SOFOM pyme: 24-45% TNA. Sumeria pilot results: Scanntech Uruguay.</div>
 </div>
@@ -183,7 +194,17 @@ const C = {
   py: { rate:20, def:4.5, loan:2000, approval:20, coll:6, cof:5.5,
         src:'BCP Paraguay (2025-2026). System morosidad: 2.5%. Active rate MN: 16.33%. TPM: 5.50%.' },
   cl: { rate:18, def:5.0, loan:2500, approval:22, coll:6, cof:4.5,
-        src:'CMF Chile (2026). System morosidad 90+ days: 2.38%. Cartera deteriorada: 6.04%. TPM: 4.50%.' }
+        src:'CMF Chile (2026). System morosidad 90+ days: 2.38%. Cartera deteriorada: 6.04%. TPM: 4.50%.' },
+  pe: { rate:25, def:6.9, loan:2000, approval:15, coll:7, cof:5,
+        src:'SBS Peru (Mar 2026). MYPE morosidad: 6.9% (down from 10% peaks). System: 3.3%. TCEA avg: 48.7%. Cajas: 47.2%. Fintechs: 112.4%. BCP 33% market share (Sumeria partner via Yape).' },
+  pa: { rate:12, def:3.5, loan:3500, approval:25, coll:5, cof:4,
+        src:'SBP Panama (Jul 2026). CBI morosidad: 1.50% (down from 1.67%). Cartera vencida: 2.19%. Mora 61+ days: 4.1% (down from 5.2%). USD economy (no FX risk). Free rates (Art. 79 Ley Bancaria).' },
+  co: { rate:22, def:6.6, loan:2000, approval:18, coll:7, cof:11.25,
+        src:'Superfinanciera/BanRep Colombia (Jul 2026). Microcrédito mora: 6.6%. System: 3.8%. TPM: 11.25% (subió 75bp jun 2026). Usura: 24.36%. Micro creció 11.1% real. Akua = Sumeria partner.' },
+  ec: { rate:20, def:6.3, loan:1500, approval:15, coll:8, cof:5,
+        src:'Superbancos Ecuador (Jul 2026). Micro mora banca: 6.27%. Cooperativas: 10.81%. PyME tasa: 9.35%. Micro minorista max: 28.23%. Economía dolarizada (USD).' },
+  cr: { rate:22, def:4.0, loan:2500, approval:20, coll:6, cof:6,
+        src:'SUGEF/BCCR Costa Rica (H2 2026). Tasa max colones: 36.48%. Max USD: 30.11%. Tasa activa media: 14.3%. ROE sistema: 7%. Reforma Sugef 1-26 en consulta.' }
 };
 
 function setC(code) {
@@ -251,6 +272,11 @@ function calc() {
   if (code.includes('🇦🇷')) cofRate = 0.12;
   else if (code.includes('🇵🇾')) cofRate = 0.055;
   else if (code.includes('🇨🇱')) cofRate = 0.045;
+  else if (code.includes('🇵🇪')) cofRate = 0.05;
+  else if (code.includes('🇵🇦')) cofRate = 0.04;
+  else if (code.includes('🇨🇴')) cofRate = 0.1125;
+  else if (code.includes('🇪🇨')) cofRate = 0.05;
+  else if (code.includes('🇨🇷')) cofRate = 0.06;
 
   // Update labels
   document.getElementById('v_m').textContent = merchants.toLocaleString('en-US');
